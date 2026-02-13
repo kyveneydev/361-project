@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Music Generator</h1>
+            <p class="subtitle">Describe your music and let AI create it for you</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <form id="musicForm" aria-label="Music generation form">
+                    <div class="form-group">
+                        <label for="musicDescription" class="sr-only">Music Description</label>
+                        <input 
+                            type="text" 
+                            id="musicDescription" 
+                            name="musicDescription"
+                            placeholder="Describe your music: upbeat jazz with piano and drums"
+                            aria-label="Enter a description of the music you want to generate (minimum 10 characters)"
+                            aria-describedby="description-help error-message"
+                            aria-required="true"
+                            minlength="10"
+                            required
+                        >
+                        <span id="description-help" class="help-text">
+                            Enter at least 10 characters describing the music you want
+                        </span>
+                        <div id="error-message" class="error-message" role="alert" aria-live="polite"></div>
+                    </div>
+                    
+                    <button 
+                        type="submit" 
+                        id="generateButton"
+                        aria-label="Generate music based on your description"
+                    >
+                        <span class="button-text">Generate Music</span>
+                        <span class="button-loader" aria-hidden="true"></span>
+                    </button>
+                </form>
+            </section>
+
+            <section class="status-section" id="statusSection" aria-live="polite" aria-atomic="true">
+                <div id="statusMessage" class="status-message"></div>
+            </section>
+
+            <section class="audio-section" id="audioSection" aria-label="Generated music player">
+                <div id="audioPlayer" class="audio-player" style="display: none;">
+                    <h2>Your Generated Music</h2>
+                    <div class="audio-controls">
+                        <button 
+                            id="playPauseButton" 
+                            class="control-button play-pause"
+                            aria-label="Play or pause the generated music"
+                            aria-pressed="false"
+                        >
+                            <span class="icon" aria-hidden="true">▶</span>
+                            <span class="button-label">Play</span>
+                        </button>
+                        
+                        <div class="volume-control">
+                            <label for="volumeSlider" class="sr-only">Volume</label>
+                            <button 
+                                id="volumeButton"
+                                class="control-button volume"
+                                aria-label="Mute or unmute audio"
+                                aria-pressed="false"
+                            >
+                                <span class="icon" aria-hidden="true">🔊</span>
+                                <span class="button-label">Volume</span>
+                            </button>
+                            <input 
+                                type="range" 
+                                id="volumeSlider" 
+                                min="0" 
+                                max="100" 
+                                value="100"
+                                aria-label="Adjust volume"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-valuenow="100"
+                            >
+                            <span id="volumeValue" class="volume-value" aria-live="polite">100%</span>
+                        </div>
+                    </div>
+                    
+                    <audio 
+                        id="audioElement" 
+                        preload="auto"
+                        aria-label="Generated music audio player"
+                    ></audio>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Music Generator Abstraction Layer -->
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.js"></script>
+    <script src="music-generator-interface.js"></script>
+    <script src="tone-music-generator.js"></script>
+    <script src="api-music-generator.js"></script>
+    <script src="music-generator-manager.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

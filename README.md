@@ -8,6 +8,9 @@ browser.
 
 ### User Story 1: Text Input for Music Description
 
+As a user, I want to receive generated audio based on my description so that I can hear the music I
+requested.
+
 - Text input field with clear placeholder text and labels
 - Real-time validation (minimum 10 characters)
 - Accessible design with ARIA labels and keyboard navigation
@@ -16,12 +19,18 @@ browser.
 
 ### User Story 2: Music Generation
 
+As a user, I want to receive generated audio based on my description so that I can hear the music I
+requested.
+
 - Generates audio files (WAV format) based on text descriptions
 - Displays loading status during generation
 - Error handling with user-friendly messages
 - Generation completes within 30 seconds for standard requests
 
 ### User Story 3: Audio Playback
+
+As a user, I want to play the generated music directly in the web app so that I can listen to my
+creation immediately without downloading.
 
 - Built-in audio player with play/pause controls
 - Volume control with slider
